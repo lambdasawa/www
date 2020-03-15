@@ -2,6 +2,12 @@ baseURL: "/"
 languageCode: "ja-jp"
 title: "www.lambdasawa.net"
 theme: "vanilla-bootstrap-hugo-theme"
+menu:
+  nav:
+    - name: Home
+      pre: home
+      url: /
+      weight: 1
 deployment:
   targets:
     URL: "s3://www.lambdasawa.net?region=ap-northeast-1"
