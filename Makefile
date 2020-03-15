@@ -4,5 +4,7 @@ local:
 	hugo server
 
 deploy:
-	hugo
-	hugo deploy
+	hugo --minify
+	hugo deploy --force
+	aws cloudfront create-invalidation --distribution-id ${HUGO_cloudFrontDistributionID} --paths "/*"
+
