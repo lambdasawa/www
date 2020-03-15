@@ -2,6 +2,7 @@ baseURL: "/"
 languageCode: "ja-jp"
 title: "www.lambdasawa.net"
 theme: "vanilla-bootstrap-hugo-theme"
+googleAnalytics: ""
 menu:
   nav:
     - name: Home
