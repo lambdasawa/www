@@ -9,6 +9,14 @@ menu:
       pre: home
       url: /
       weight: 1
+    - name: Blog
+      pre: edit
+      url: /posts
+      weight: 2
+    - name: RSS
+      pre: rss
+      url: /index.xml
+      weight: 3
 deployment:
   targets:
     URL: "s3://www.lambdasawa.net?region=ap-northeast-1"
