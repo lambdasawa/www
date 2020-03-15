@@ -8,3 +8,5 @@ deploy:
 	hugo deploy --force
 	aws cloudfront create-invalidation --distribution-id ${HUGO_cloudFrontDistributionID} --paths "/*"
 
+open:
+	open https://www.lambdasawa.net/
