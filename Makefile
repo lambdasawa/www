@@ -5,7 +5,7 @@ local:
 
 deploy:
 	hugo --minify
-	hugo deploy --force
+	aws s3 sync public s3://www.lambdasawa.net --delete --acl public-read
 	aws cloudfront create-invalidation --distribution-id ${HUGO_cloudFrontDistributionID} --paths "/*"
 
 open:
