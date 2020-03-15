@@ -1,5 +1,5 @@
 ---
-title: www.lambdasawa.net
+title: www.λ沢.net
 ---
 
 # About
