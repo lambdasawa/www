@@ -1,0 +1,17 @@
+baseURL: "/"
+languageCode: "ja-jp"
+title: "www.lambdasawa.net"
+theme: "vanilla-bootstrap-hugo-theme"
+deployment:
+  targets:
+    URL: "s3://www.lambdasawa.net?region=ap-northeast-1"
+    cloudFrontDistributionID: ""
+  matchers:
+    - pattern: "^.+\\.(js|css|svg|ttf)$"
+      cacheControl: "max-age=31536000, no-transform, public"
+      gzip: true
+    - pattern: "^.+\\.(png|jpg)$"
+      cacheControl: "max-age=31536000, no-transform, public"
+      gzip: false
+    - pattern: "^.+\\.(html|xml|json)$"
+      gzip: true
