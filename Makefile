@@ -5,8 +5,7 @@ local:
 
 deploy:
 	hugo --minify
-	aws s3 sync public s3://www.lambdasawa.net --delete --acl public-read
-	aws cloudfront create-invalidation --distribution-id ${HUGO_cloudFrontDistributionID} --paths "/*"
+	cd infra && yarn cdk deploy
 
 open:
 	open https://www.lambdasawa.net/
