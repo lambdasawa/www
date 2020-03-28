@@ -42,7 +42,7 @@ languages:
           url: https://github.com/lambdasawa
           weight: 2
         - identifier: Twitter
-          name: Twiter
+          name: Twitter
           url: https://twitter.com/lambdasawa
           weight: 3
         - identifier: discord
