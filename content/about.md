@@ -4,7 +4,9 @@ title: www.λ沢.net
 
 # About
 
-Programmer.
+プログラマです。
+Go, TypeScript の仕事をすることが多いですが、必要であれば何でも書きます。
+Web のバックエンドを書くのが得意です。
 
 ## SNS
 
