@@ -53,6 +53,10 @@ languages:
           name: Mail
           url: mailto:lambdasawa@gmail.com
           weight: 5
+        - identifier: feed
+          name: Feed
+          url: /index.xml
+          weight: 6
 
 deployment:
   targets:
