@@ -1,5 +1,5 @@
 ---
-title: www.λ沢.net
+title: About
 ---
 
 # About
