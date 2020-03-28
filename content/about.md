@@ -2,7 +2,12 @@
 title: About
 ---
 
-λ沢 (or lambdasawa or 入沢) です。
+<!-- markdownlint-disable -->
+<div id="icon">
+  <img src="/icon.png">
+  <div>λ沢 (Tsubasa Irisawa)</div>
+</div>
+<!-- markdownlint-enable -->
 
 プログラマです。  
 Go, TypeScript の仕事をすることが多いです。  

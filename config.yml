@@ -58,6 +58,11 @@ languages:
           url: /index.xml
           weight: 6
 
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+
 deployment:
   targets:
     URL: "s3://www.lambdasawa.net?region=ap-northeast-1"
