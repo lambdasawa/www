@@ -50,7 +50,7 @@ dotenv .env.local
 
 ## `encrypted-env.yml` について
 
-```
+```yaml
 KEY_1: ENC[AES256_GCM,data:XXXX,tag:XXXX,type:str]
 KEY_2: ENC[AES256_GCM,data:XXXX,tag:XXXX,type:str]
 sops:
@@ -68,7 +68,8 @@ sops:
     version: 3.5.0
 ```
 
-これは `sops encrypted-env.yml` のコマンドで作成、編集をします。
+これは `env EDITOR="code --wait" sops encrypted-env.yml` のコマンドで作成、編集をします。
+`EDITOR` は `.bashrc` などで指定されていれば明示する必要はありません。
 各値は KMS で暗号化されたものになっており、 この KMS にアクセスする AWS の権限がないと復号出来ないようになっています。
 そのため、 AWS の権限は別で管理するとして上記のファイルはコミットしてバージョン管理が可能です。
 
@@ -78,7 +79,7 @@ sops:
 
 ## `.env` について
 
-```
+```bash
 KEY_1=SECRET_VALUE_1
 KEY_2=SECRET_VALUE_2
 ```
@@ -100,7 +101,7 @@ env \
 
 ## `.env.local` について
 
-```
+```bash
 KEY_2=LAMBDASAWA_VALUE_2
 ```
 
@@ -109,7 +110,7 @@ KEY_2=LAMBDASAWA_VALUE_2
 
 ## `.gitignore` について
 
-```
+```dotenv
 .env
 .env.local
 ```
@@ -121,7 +122,7 @@ KEY_2=LAMBDASAWA_VALUE_2
 上記のような設定をすると最初に書いたアプリケーションの実行結果は以下のようになります。
 (`direnv allow .` は実行済みの想定。)
 
-```
+```bash
 $ node app.js
 SECRET_VALUE_1 , LAMBDASAWA_VALUE_2
 ```
