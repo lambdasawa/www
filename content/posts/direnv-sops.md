@@ -8,8 +8,8 @@ draft: false
 
 [direnv](https://github.com/direnv/direnv) は雑に説明すると `direnv allow .` で許可したディレクトリに `.env` というファイルがあると、そのディレクトリに `cd` したときに `.env` に書いてある値が環境変数に設定されるというものです。`brew` でインストールできます。  
 
-[sops](https://github.com/mozilla/sops) は雑に説明すると任意のファイルを AWS の KMS などで暗号/複合するためのユーティリティです。 `brew` でインストールできます。  
-AWS ではなく GCP などでも使えるようですが、自分は使っていないためここでは省略します。  
+[sops](https://github.com/mozilla/sops) は雑に説明すると JSON, YAML ファイルを AWS の KMS などで暗号/複合するためのユーティリティです。 `brew` でインストールできます。  
+AWS ではなく GCP, Azure でも使えるようですが、自分は使っていないためここでは省略します。  
 復号後の値を `.env` のフォーマットで出力できるため、 `direnv` と連携しやすいです。  
 [Ruby on Rails の master.key](https://railsguides.jp/5_2_release_notes.html#credential%E7%AE%A1%E7%90%86) の仕組みを知っている方であれば、それと同じようなものと考えていただいて問題ないです。
 
@@ -69,9 +69,9 @@ sops:
 ```
 
 これは `env EDITOR="code --wait" sops encrypted-env.yml` のコマンドで作成、編集をします。
-`EDITOR` は `.bashrc` などで指定されていれば明示する必要はありません。
-各値は KMS で暗号化されたものになっており、 この KMS にアクセスする AWS の権限がないと復号出来ないようになっています。
-そのため、 AWS の権限は別で管理するとして上記のファイルはコミットしてバージョン管理が可能です。
+`EDITOR` は `.bashrc` などで指定されていれば明示する必要はありません。  
+各値は KMS で暗号化されたものになっており、 この KMS にアクセスする AWS の権限がないと復号出来ないようになっています。  
+そのため、 AWS の権限は別で管理するとして上記のファイルはコミットしてバージョン管理が可能です。  
 
 環境が複数ある場合は `encrypted-env-dev.yml`, `encrypted-env-production.yml` などを追加してコミットします。
 
