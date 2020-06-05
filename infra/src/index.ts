@@ -8,15 +8,27 @@ import * as certificatemanager from "@aws-cdk/aws-certificatemanager";
 import * as route53 from "@aws-cdk/aws-route53";
 import * as route53Targets from "@aws-cdk/aws-route53-targets";
 
-const hostedZone = "lambdasawa.net";
-const domain = "www.lambdasawa.net";
+const config = {
+  cdk: {
+    account: process.env.CDK_DEFAULT_ACCOUNT,
+    region: process.env.CDK_DEFAULT_REGION
+  },
+  route53: {
+    hostedZone: process.env.ROUTE53_HOSTED_ZONE || "",
+    domain: process.env.ROUTE53_DOMAIN || ""
+  },
+  s3: {
+    bucketName: process.env.S3_BUCKET_NAME || "",
+    localAssetPath: process.env.S3_LOCAL_ASSET_PATH || ""
+  }
+};
 
 export class LambdasawaNetStack extends cdk.Stack {
   constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
     const s3Bucket = new s3.Bucket(this, "Bucket", {
-      bucketName: domain,
+      bucketName: config.s3.bucketName,
       websiteIndexDocument: "index.html",
       websiteErrorDocument: "error.html",
       publicReadAccess: true
@@ -26,7 +38,7 @@ export class LambdasawaNetStack extends cdk.Stack {
       this,
       "Certificate",
       {
-        domainName: domain,
+        domainName: config.route53.domain,
         validationMethod: certificatemanager.ValidationMethod.DNS
       }
     );
@@ -47,7 +59,7 @@ export class LambdasawaNetStack extends cdk.Stack {
         viewerCertificate: cloudfront.ViewerCertificate.fromAcmCertificate(
           certificate,
           {
-            aliases: [domain]
+            aliases: [config.route53.domain]
           }
         )
       }
@@ -55,16 +67,16 @@ export class LambdasawaNetStack extends cdk.Stack {
 
     new route53.ARecord(this, "ARecord", {
       zone: route53.HostedZone.fromLookup(this, "MyZone", {
-        domainName: hostedZone
+        domainName: config.route53.hostedZone
       }),
-      recordName: domain,
+      recordName: config.route53.domain,
       target: route53.RecordTarget.fromAlias(
         new route53Targets.CloudFrontTarget(distribution)
       )
     });
 
     new s3Deployment.BucketDeployment(this, "DeployWithInvalidation", {
-      sources: [s3Deployment.Source.asset(process.env.DEPLOY_PATH || "")],
+      sources: [s3Deployment.Source.asset(config.s3.localAssetPath)],
       destinationBucket: s3Bucket,
       distribution,
       distributionPaths: ["/*"]
@@ -74,8 +86,5 @@ export class LambdasawaNetStack extends cdk.Stack {
 
 const app = new cdk.App();
 new LambdasawaNetStack(app, "LambdasawaNetStack", {
-  env: {
-    account: process.env.CDK_DEFAULT_ACCOUNT,
-    region: process.env.CDK_DEFAULT_REGION
-  }
+  env: config.cdk
 });
