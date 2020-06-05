@@ -1,0 +1,103 @@
+baseurl = "https://www.lambdasawa.net"
+title   = "λ沢.net"
+
+theme = "hugo-coder"
+
+defaultcontentlanguage = "en"
+languagecode           = "en"
+
+canonifyurls = true
+paginate     = 20
+
+pygmentscodefences            = true
+pygmentscodefencesguesssyntax = true
+pygmentsstyle                 = "monokai"
+
+[params]
+author    = "lambdasawa"
+avatarurl = "/icon.png"
+# description = "Super Ultra Hyper Miracle Programmer"
+# info     = "Super Ultra Hyper Miracle Programmer"
+# keywords = "blog,developer,personal"
+# gravatar = "lambdasawa@gmail.com"
+# footercontent = "Super Ultra Hyper Miracle Programmer"
+
+dateformat = "2006-01-02"
+
+hideCopyright = false
+hideCredits   = false
+hideFooter    = false
+since         = 2020
+
+# Git Commit in Footer, uncomment the line below to enable it.
+commit = "https://github.com/luizdepra/hugo-coder/tree/"
+
+rtl = false
+
+# Specify light/dark colorscheme
+# Supported values:
+# "auto" (use preference set by browser)
+# "dark" (dark background, light foreground)
+# "light" (light background, dark foreground) (default)
+colorscheme = "dark"
+
+# Series see also post count
+maxSeeAlsoItems = 5
+
+# Enable Twemoji
+enableTwemoji = true
+
+# Custom CSS
+custom_css = [ "/index.css" ]
+
+# Custom JS
+custom_js = [ "/index.js" ]
+
+[taxonomies]
+category = "categories"
+series   = "series"
+tag      = "tags"
+
+[[params.social]]
+icon   = "fab fa-github"
+name   = "Github"
+url    = "https://github.com/lambdasawa"
+weight = 1
+
+[[params.social]]
+icon   = "fab fa-twitter"
+name   = "Twitter"
+url    = "https://twitter.com/lambdasawa"
+weight = 2
+
+[[params.social]]
+icon   = "fab fa-discord"
+name   = "Discord"
+url    = "https://discordapp.com/users/253206897950195722"
+weight = 3
+
+[languages]
+  [languages.en]
+  languagename = "Japanese"
+
+    [languages.en.menu]
+
+      [[languages.en.menu.main]]
+      name   = "About"
+      url    = "about/"
+      weight = 1
+
+      [[languages.en.menu.main]]
+      name   = "Blog"
+      url    = "posts/"
+      weight = 2
+
+      [[languages.en.menu.main]]
+      name   = "Contact"
+      url    = "mailto:lambdasawa@gmail.com"
+      weight = 3
+
+      [[languages.en.menu.main]]
+      name   = "RSS"
+      url    = "/index.xml"
+      weight = 4
