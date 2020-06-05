@@ -1,0 +1,7 @@
+.navigation .navigation-title {
+  text-transform: none;
+}
+
+.content article p {
+  text-align: unset;
+}
