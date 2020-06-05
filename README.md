@@ -3,7 +3,9 @@
 ## How to start local server
 
 ```sh
-$ make local
+$ make start
+
+$ make open
 ```
 
 ## How to deploy
