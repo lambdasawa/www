@@ -13,6 +13,8 @@ pygmentscodefences            = true
 pygmentscodefencesguesssyntax = true
 pygmentsstyle                 = "monokai"
 
+enableRobotsTXT = true
+
 [params]
 author    = "lambdasawa"
 avatarurl = "/icon.png"
