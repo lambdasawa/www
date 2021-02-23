@@ -1,14 +1,15 @@
 name: deploy to amazon s3
 
 on:
+  workflow_dispatch:
   push:
     branches:
-      - master
+      - main
       - ci
 
 jobs:
   deploy:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout with submodule
         uses: actions/checkout@v2
@@ -18,7 +19,7 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: "0.71.1"
+          hugo-version: "0.79.1"
           extended: true
 
       - name: Build
@@ -26,16 +27,17 @@ jobs:
         env:
           HUGO_googleAnalytics: ${{ secrets.HUGO_googleAnalytics }}
 
-      - name: Use Node.js 12.x
+      - name: Use Node.js 14.x
         uses: actions/setup-node@v1
         with:
-          node-version: "12.x"
+          node-version: "14.x"
 
       - name: Deploy
         run: |
+          set -xe
           cd infra
-          yarn
-          yarn cdk deploy --require-approval never
+          npm i
+          npm run cdk -- deploy --require-approval never --events logs
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
