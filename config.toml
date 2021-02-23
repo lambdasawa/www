@@ -50,10 +50,10 @@ maxSeeAlsoItems = 5
 enableTwemoji = true
 
 # Custom CSS
-custom_css = [ "/index.css" ]
+customCSS = [ "/index.css" ]
 
 # Custom JS
-custom_js = [ "/index.js" ]
+customJS = [ "/index.js" ]
 
 [taxonomies]
 category = "categories"
@@ -61,19 +61,19 @@ series   = "series"
 tag      = "tags"
 
 [[params.social]]
-icon   = "fab fa-github"
+icon   = "fa fa-github"
 name   = "Github"
 url    = "https://github.com/lambdasawa"
 weight = 1
 
 [[params.social]]
-icon   = "fab fa-twitter"
+icon   = "fa fa-twitter"
 name   = "Twitter"
 url    = "https://twitter.com/lambdasawa"
 weight = 2
 
 [[params.social]]
-icon   = "fab fa-discord"
+icon   = "fa fa-discord"
 name   = "Discord"
 url    = "https://discordapp.com/users/253206897950195722"
 weight = 3
