@@ -9,4 +9,4 @@ open:
 .PHONY: deploy
 deploy:
 	hugo --minify
-	cd infra && yarn cdk deploy
+	cd infra && npm i && npm run cdk -- deploy
