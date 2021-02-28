@@ -26,9 +26,9 @@ avatarurl = "/icon.png"
 
 dateformat = "2006-01-02"
 
-hideCopyright = false
-hideCredits   = false
-hideFooter    = false
+hideCopyright = true
+hideCredits   = true
+hideFooter    = true
 since         = 2020
 
 # Git Commit in Footer, uncomment the line below to enable it.
