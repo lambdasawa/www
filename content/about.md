@@ -90,6 +90,7 @@ https://twitter.com/9un60u_m1re1/likes
 
 ## 資格/認定
 
+- 2021/04 [AWS Certified Solutions Architect – Associate](https://www.credly.com/badges/a78d528c-a5f6-47cc-8869-98ca33a89f1a/public_url)
 - 2014/07 情報セキュリティスペシャリスト試験
 - 2014/06 Ruby Association 主催 Ruby Association Certified Ruby Programmer Gold
 - 2012/10 応用情報技術者試験
