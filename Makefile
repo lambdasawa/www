@@ -1,12 +1,14 @@
-.PHONY: start
+.PHONY: start open new deploy
+
 start:
 	hugo server
 
-.PHONY: open
 open:
 	open http://localhost:1313/
 
-.PHONY: deploy
+new:
+	hugo new posts/${TITLE}.md
+
 deploy:
 	hugo --minify
 	cd infra && npm i && npm run cdk -- deploy
