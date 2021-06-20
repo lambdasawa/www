@@ -1,4 +1,4 @@
-name: deploy to amazon s3
+name: Publish
 
 on:
   workflow_dispatch:
@@ -8,9 +8,17 @@ on:
       - ci
 
 jobs:
-  deploy:
+  publish:
     runs-on: ubuntu-latest
+    env:
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
     steps:
+      - uses: act10ns/slack@v1
+        with:
+          status: starting
+          channel: ${{ secrets.SLACK_CHANNEL }}
+        if: always()
+
       - name: Checkout with submodule
         uses: actions/checkout@v2
         with:
@@ -47,3 +55,10 @@ jobs:
           ROUTE53_DOMAIN: ${{ secrets.ROUTE53_DOMAIN }}
           S3_BUCKET_NAME: ${{ secrets.S3_BUCKET_NAME }}
           S3_LOCAL_ASSET_PATH: ${{ secrets.S3_LOCAL_ASSET_PATH }}
+
+      - uses: act10ns/slack@v1
+        with:
+          status: ${{ job.status }}
+          steps: ${{ toJson(steps) }}
+          channel: ${{ secrets.SLACK_CHANNEL }}
+        if: always()
