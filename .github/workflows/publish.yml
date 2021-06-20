@@ -40,12 +40,20 @@ jobs:
         with:
           node-version: "16.x"
 
-      - name: Deploy
-        run: |
-          set -xe
-          cd infra
-          npm i
-          npm run cdk -- deploy --require-approval never --events logs
+      - uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Download CDK Library
+        run: npm ci
+        working-directory: infra
+
+      - name: Deploy CDK
+        run: npm run cdk -- deploy --require-approval never --events logs
+        working-directory: infra
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
